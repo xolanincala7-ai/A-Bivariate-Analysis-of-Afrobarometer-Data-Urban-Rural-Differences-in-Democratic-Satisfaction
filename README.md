@@ -2,7 +2,11 @@
 This is an Analysis of Afrobarometer Round 9 data using R to test whether urban–rural residency. influences respondent satisfaction with democracy in Ghana, as part of my MA‑E‑Science work.
 
 # Urban–Rural Differences in Democratic Satisfaction (Ghana)  
-*Part of my MA‑E‑Science portfolio — please read this project*
+*Part of my MA‑E‑Science portfolio — please read this project (.html file)*
+
+# Project Preview
+
+Screenshot: 
 
 ## Project Purpose  
 This project analyses **Afrobarometer Round 9 survey data (2021–2023)** to test whether urban and rural residence influences satisfaction with democracy in Ghana. The study recodes survey responses into a binary variable (Satisfied vs Not Satisfied) and applies statistical tests to compare proportions across residence types.
