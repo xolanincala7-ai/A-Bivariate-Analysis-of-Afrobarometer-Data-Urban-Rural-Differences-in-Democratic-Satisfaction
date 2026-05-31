@@ -1,0 +1,635 @@
+---
+title: "Urban–Rural Differences in Democratic Satisfaction: A Bivariate Analysis of Afrobarometer Data from Ghana"
+author: "by Xolani Charles Ncala"
+date: "2025-05-01"
+output: html_document
+---
+<div style="text-align: center; font-family: 'Times New Roman', serif;">
+
+<p style="font-size: 22px; font-weight: bold; margin-bottom: 10px;">
+  Master of Arts in E-Science
+</p>
+
+<p style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">
+  Statistical Computing and Inference for the Social Sciences and Humanities
+</p>
+
+<p style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+  (SOSS 7098) Research Report 2: Analysing Bivariate Data
+</p>
+
+<p style="font-size: 20px; font-weight: bold; margin-bottom: 30px;">
+  Urban–Rural Differences in Democratic Satisfaction: A Bivariate Analysis of Afrobarometer Data from Ghana
+</p>
+
+<p style="font-size: 20px; font-weight: bold; margin-bottom: 40px;">
+  University of Witswatersrand
+</p>
+
+<p style="font-size: 18px; font-weight: bold; margin-bottom: 30px;">
+  Student: Xolani Charles Ncala (2456543)
+</p>
+
+<p style="font-size: 16px; font-style: italic;">
+  I know plagiarism is wrong; I have read the section in the Essay Writing Guide concerning plagiarism; and I declare that this Essay is my own work.
+</p>
+
+</div>
+
+```{r 1, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+# Introduction
+
+> “Inequality is not just an issue between individuals, between classes, between regions. It is between Urban and Rural.” – Michael Ignatieff
+
+This quote by Canadian political author Michael Ignatieff, highlights how inequality extends beyond personal or regional differences, to a structural and geographic divide between urban and rural areas. This urban and rural divide has also been a fundamental aspect of public opinion and behaviour studies from the outset of modern development according to Ignacio Lago (2021). In the current world order characterized by the global capitalist system across the world, where more than half of the population reside in urban areas that typically enjoy better investment in infrastructure, services and economic prospects, while rural areas with less population are frequently left behind, with limited access to jobs, healthcare and education that leads to the “relative depletion of their human and economic capital” (Lago, 2021). This imbalance contributes not only to economic and social disparities but it also (possibly) influences how people within these different regions perceive and engage with democratic institutions (Harding, 2020). 
+
+#### <u>Theorising The Urban-Rural Divide</u>
+According to Nathalie Vigna (2024) the urban-rural divide has also historically shaped political differences, with rural populations largely engaged in agriculture and urban populations in industrial work. Her idea falls along the lines of modernization theory which suggest that “urbanization and economic development have fostered more liberal and tolerant political views in cities, driven by greater opportunities for socialization and individual freedom” (Vigna, 2024). This suggests that in modern states that employ a democratic dispensation, rural citizens most likely feel overlooked by policymakers and disconnected not only from the decisions that affect their lives but also the experience of the full extent of the state on the ground, therefore leading to varying levels of trust and satisfaction with democracy than their urban counterparts. The urban-rural dimension gives significance to the idea of ‘geography of discontent’ which emphasizes that economic inequalities within countries have fuelled political discontent, particularly in regions experiencing local economic decline and stagnation (Vigna, 2024). It is crucial to comprehend this divide to investigate how citizens’ place of residence affect their democratic experiences and expectations in developing nations.  
+
+#### <u>Theorising Democracy</u>
+The concept of democracy can be understood in layered terms. It can be unpacked through an article by Armah-Attoh & Robertson (2014) titled “The Practice of Democracy in Ghana: Beyond the Formal Framework”, where they discuss the state of democracy in Ghana particularly focusing on both formal and participatory aspects  after the 2012 elections, and emphasize the idea that citizen engagement and the demand for public services can impact the democratic process or experience. In this text formal democracy is defined as a system of political rule where adult citizens have the right to vote, elections are held regularly and fairly, and freedoms (rights) like speech and assembly are protected (Annah-Attoh & Robertson 2014). According to Armah-Attoh & Robertson (2014) “democracy should be seen not just as a system of elections and institutions, but as a practice rooted in the everyday engagement of citizens with the state”, particularly through their demands for public services and accountability. This further emphasizes that democracy gains greater significance when it transcends mere procedures, where every group, irrespective of their background, can freely participate in public life without encountering structural obstacles. Significantly, this deeper form of democracy encourages continuous dialogue between the government and its people, giving citizens real influence over policy decisions that affect their lives. The relation here is that formal institutions may be responsible for laying the groundwork, but essentially it is through active and inclusive participation of the people that democracy becomes truly responsive.
+
+#### <u>Theorising Satisfaction With Democracy in Ghana</u>
+Since the aftermath of the 2012 elections and the subsequent Supreme Court ruling, Ghanaian citizens increasingly asserted their demands for accountability and improved public service delivery, signalling a progression toward a more participatory and substantive democratic practice (Debrah, 2013). This growing engagement also brings into focus the level of public satisfaction with democracy, which serves as a critical indicator of underlying political discontent and the perceived effectiveness of democratic institutions. Vigna (2024) conceptualizes satisfaction with democracy (SWD) as an indicator of political backing centred on the regime level, reflecting citizens’ evaluations of how well the system of government functions according to its rules and practices. Unlike abstract support for democratic ideals, SWD captures concrete assessments of the regime’s performance in delivering outcomes, such as public goods and effective governance.  This concept is primarily shaped by economic circumstances and political dynamics, with crucial elements encompassing government accountability, democratic values, and views on representation (Vigna, 2024). Although economic performance is more significant in influencing SWD in less affluent countries, political elements have a greater impact in richer nations, positioning SWD as an important measure of general political backing and potential discontent (Crawford, 2009). For the purposes of this paper, satisfaction with democracy, is also considered a valuable tool for analysing spatial inequalities, as it reflects both individual material conditions and broader contextual factors.  Significantly, people who are better off financially tend to be more satisfied with democracy because they usually get better public services and have more resources. In contrast, those living in poorer areas or who’ve had bad experiences with local government are often less satisfied, therefore showing how where you live and what you have can shape how you feel about democracy.
+
+Essentially, the purpose of this report is to explore whether there are differences in satisfaction with democracy between urban and rural residents in Ghana, using data from the Afrobarometer Round 8 survey. To be specific it analyses responses to the question, “Overall, how satisfied are you with the way democracy works in Ghana?” to assess how geographic location influences democratic attitudes. The central hypothesis guiding this analysis is that individuals living in urban areas are more likely to report satisfaction with democracy compared to those in rural areas. To operationalize this, responses of “Very satisfied” and “Fairly satisfied” were combined into a single category representing general satisfaction, coded as 1 in the binary variable (SWD). This recoding allows us to formally test the null hypothesis ($H_0$) that there is no difference in the proportion of satisfied respondents between urban and rural residents, against the alternative hypothesis ($H_0$) that a difference does exist.
+
+# Concepts and Measurement
+
+#### <u>Describing the Data and Concept Meausurements</u>
+The data used in this report comes from the Afrobarometer Round 9 survey that was carried out in Ghana between the years 2021 and 2023. In Afrobarometer briefing papers published by the independent non-profit research network, we learn that it runs an international series of public opinion surveys that evaluate citizen’s perspectives on democracy, governance, economic conditions, and significant political issues in over 30 African countries (Annah-Attoh & Robertson, 2014). The primary goal of their network is to produce scientifically reliable data on public sentiment, strengthen institutional capabilities for survey research, and share results to guide policy and practice. Since 1999, periodical Afrobarometer surveys have been conducted in Ghana, enabling longitudinal comparisons by using a standardized questionnaire and a consistent methodological approach (Annah-Attoh & Robertson 2014). The dataset from Round 9 used in this study includes 2,369 observations and 398 variables, encompassing a wide variety of political and socio-economic indicators, with a specific focus on two variables the Urban rural Primary Sampling Unit and Satisfaction with democracy. Afrobarometer uses a constant sampling approach which is the Probability Proportionate to Population Size (PPPS), which ensures that the sample accurately reflects the national population distributions), “thus taking account of population distributions, gender as well as rural-urban divides” (Annah-Attoh & Robertson, 2014). 
+
+In terms of concept measurements Satisfaction With Democracy (SWD) is operationalized using responses to the survey question Q31 which asks: “Overall, how satisfied are you with the way democracy works in [country]?", which offers 7 response categories: 1 = Not at all satisfied, 2 = Not very satisfied, 3 = Fairly satisfied, 4= Very satisfied, 8 = Refused, 9 = Do not Know, and 0 = The country is not a democracy. Since this report is focused more on citizens attitude about the functioning of democracy it will exclude the data that are mentioned under the last three response categories, because they do not reflect a clear evaluation of satisfaction with the functioning of democracy. The Urban and Rural residence divide (URBRUR) where 1 = Urban and 2 = Rural, is assessed by Afrobarometer classification of respondents’ sampling unit in accordance with the official census definitions of Ghana. This means that this report uses an already trusted and standardized way to define who is ‘urban’ and who is ‘rural’ making the comparison between the two clear, consistent, and reliable.
+
+The validity of the data used is backed by Afrobarometer’s thorough instrument design, its methodical sampling techniques, and its wide-ranging references in various political and African studies. This becomes essential because it ensures that the findings of the report are based on high-quality, reliable, and widely respected data. Another element of the data validity is that the satisfaction with democracy measure reflects the publics’ direct judgement of how democracy practically operates rather than their support for principles that are most of the time abstract. Robin Harding (2020) maintains that with this metric, the regional or educational differences in how people perceive the term “democracy” could raise questions about its validity. With regards to the reliability of the data, it is improved by the standardised administration procedures of the survey, through training for interviewers, and a large national sample size, although the impact of current political developments during the data collection cannot be entirely disregarded. This is supported by the idea that “Afrobarometer’s main goal is to produce scientifically reliable data on public opinion in Africa while strengthening institutional capacities for survey research” (Annah-Attoh & Robertson, 2014). So essentially maintaining this level of reliability, is important because it means that the results produced by the report are more trustworthy and less likely to be biased by how the survey was carried out.
+
+#### <u>Recoding the Variables</u>
+
+The first table of the report below shows the raw frequencies of satisfaction with democracy based on urban and rural divide. The display of the data in this manner offers a clear perspective on the initial distribution and trends in public sentiment across different geographic areas. This stage is essential for supporting the re-coding decisions that are also displayed in Table 2, and are explained in detail in the next paragraph.  
+
+```{r 2, echo=FALSE,warning=FALSE, message=FALSE}
+library(haven)
+
+AfroB <- "afrobarometer_release-dataset_gha_r9_en_2023-04-01.sav"
+
+
+AfroB.9 <- read_spss(AfroB)
+
+library(dplyr)
+
+AB.Ghana.R9 <- AfroB.9 %>%
+  select(RESPNO, URBRUR, Q31)
+
+# Recode Satisfaction With democracy 
+AB.Ghana.R9 <- AB.Ghana.R9 %>%
+  mutate(
+    SWD = case_when(
+      Q31 %in% c(1, 2) ~ 0,  # Not Satisfied
+      Q31 %in% c(3, 4) ~ 1,  # Satisfied
+      Q31 %in% c(8, 9, 0) ~ NA_real_
+    )
+  )
+
+library(knitr)
+AB.Ghana.R9 <- AB.Ghana.R9 %>%
+  mutate(
+    URBRUR_label = as_factor(URBRUR),
+    Q31_label = as_factor(Q31)
+  )
+
+
+before_recode_ur <- AB.Ghana.R9 %>%
+  count(URBRUR_label, Q31_label) %>%
+  rename(Residence = URBRUR_label, Response = Q31_label, Count = n)
+
+# Display table
+kable(before_recode_ur, caption = "Table 1: Sample Distribution of Satisfaction with Democracy (Q31) by Urban/Rural Residence (Before Recoding)")
+
+#Recode Urban Rural 
+
+after_recode_ur <- AB.Ghana.R9 %>%
+  mutate(SWD_label = case_when(
+    SWD == 1 ~ "Satisfied",
+    SWD == 0 ~ "Not Satisfied"
+  )) %>%
+  filter(!is.na(SWD_label) & !is.na(URBRUR_label)) %>%
+  count(URBRUR_label, SWD_label) %>%
+  rename(Residence = URBRUR_label, SWD = SWD_label, Count = n)
+
+kable(after_recode_ur, caption = "Table 2: Corrected Sample Distribution of Recoded SWD by Urban/Rural")
+```
+
+Given that the urban and rural divide serves as the grouping variable in this analysis, it is inherently dichotomous in nature and therefore does not require additional coding or re-coding for the purposes of statistical comparison.On the other hand the outcome variable measure (Q31) evaluating satisfaction with democracy was re-coded into a dichotomous format to make the binary analysis easier and the results easier to interpret. Four substantive response categories were included in this initial variable: "Very satisfied," "Fairly satisfied," "Not very satisfied," and "Not at all satisfied." Three non-substantive response categories were also included: "Don't know," "Refused," and "The country is not a democracy." With regards to the re-coding process, response categories "Not very satisfied" and "Not at all satisfied" were grouped together to indicate dissatisfaction under category - "Not very satisfied" (coded as 0), while response categories "Very satisfied" and "Fairly satisfied" were combined into a single category of those  "Satisfied" (coded as 1). This dichotomy allows simple comparison and statistical analysis, such as the difference in proportions test and 90% confidence interval, by means of the evaluative difference between positive and negative views of democratic performance. Given that they do not clearly express an evaluative judgment and could thus skew the analysis, non-substantive responses were handled as missing values (NA). This approach guarantees that the output variable concentrates just on significant statements of satisfaction or discontent with democracy.
+
+#### <u>Univariate Graphs of Variables</u> 
+
+In separating survey respondents who lived in urban and rural areas, this univariate bar graph of the **Distribution of Urban vs Rural Respondents** in Ghana below, shows the geographic distribution of the Afro-barometer Round 9 sample. Essentially, 942 respondents were from rural areas, while 1,409 respondents were from metropolitan areas, according to the data. According to this distribution, a greater percentage of the survey sample was urban dwellers. Having an undersatings of the residential breakdown is crucial because one's region frequently influences one's exposure to political messaging, access to services, and general political impressions, all of which can affect one's views on democracy and government.
+
+
+
+```{r 3, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(ggplot2)
+ggplot(AB.Ghana.R9 %>% filter(!is.na(URBRUR_label)), 
+       aes(x = URBRUR_label, fill = URBRUR_label)) +
+  geom_bar() +
+  scale_fill_manual(values = c("Urban" = "grey", "Rural" = "orange")) +
+  labs(
+    title = "Distribution of Urban vs Rural Respondents",
+    x = "Residence",
+    y = "Count"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+
+
+
+The second univariate bar graph of **Distribution of Satisfaction With Democracy** in Ghana below, presents a simplified view of how respondents feel about the state of democracy in the nation. The initial responses were divided into two categories: very satisfied (comprising those who were fairly or very satisfied) and not very satisfied (including those who were not very or not at all satisfied). Based on the graph, 1,142 participants reported being very satisfied, whereas a marginally greater figure, 1,209 participants, stated they were not very satisfied. This distribution shows a slight majority leaning toward discontent, indicating that a considerable segment of the population possesses critical perspectives on the functioning of democracy in the nation. The Bivariate analysis sill help us reveal if there's any association between the citizen's level of satisfaction with democracy and whether they live in predominantly urban or rural areas. 
+
+
+
+```{r 4, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+
+AB.Ghana.R9 <- AB.Ghana.R9 %>%
+  mutate(SWD_label = case_when(
+    SWD == 1 ~ "Very Satisfied",
+    SWD == 0 ~ "Not Very Satisfied"
+  )) %>%
+  filter(!is.na(SWD_label))
+
+# Plot
+ggplot(AB.Ghana.R9, aes(x = SWD_label, fill = SWD_label)) +
+  geom_bar() +
+  scale_fill_manual(values = c("Not Very Satisfied" = "red", 
+                               "Very Satisfied" = "green")) +
+  labs(
+    title = "Distribution of Satisfaction With Democracy (Recoded)",
+    x = "Satisfaction Level",
+    y = "Count"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+# Bivariate Analysis of Dichotomous Variables
+
+#### <u>The Rural Urban Variable and Non-dichotomous Satisfaction With Democracy</u>
+
+This section examines the link between the Afrobarometer Round 9 survey respondents' from Ghana living in urban or rural areas and their satisfaction with democracy. SWD is examined in both its recoded binary form (satisfied vs. not satisfied) and in its original detailed version of multiple categories, providing a more comprehensive insight into the patterns among different residence types. According to urban and rural divide, Table 3 below shows the respondents' satisfaction with democracy. Four levels of satisfaction are listed in the table: "Very satisfied," "Not at all satisfied," "Not very satisfied," and "Fairly satisfied." Each category's number of responders and the proportion of each group (rural and urban) that fits that level of satisfaction are shown in the table. This demonstrates the differences in participants' satisfaction between urban and rural areas. For example, more participants from rural areas (31.6%) report feeling "Not very satisfied" than participants from urban areas (30.3%). Similarly, a higher percentage of urban participants (18.9%) say they are "Very satisfied" than do rural residents (21.7%). 
+
+```{r 5, fig.width=9, fig.height=5,echo=FALSE, warning=FALSE, message=FALSE }
+library(scales)
+library(dplyr)
+
+# Contingency table with column percentages
+contingency_table <- AB.Ghana.R9 %>%
+  filter(!is.na(Q31_label) & !is.na(URBRUR_label)) %>%
+  count(Q31_label, URBRUR_label) %>%
+  group_by(URBRUR_label) %>%
+  mutate(percent = n / sum(n) * 100) %>%
+  rename(Residence = URBRUR_label,Response = Q31_label, Count = n, Percent = percent)%>%
+select(Residence, Response, Count, Percent)
+
+kable(contingency_table, digits = 2, caption = "Table 3: Contingency Table of Detailed Satisfaction with Democracy (Q31) by Residence with Column Percentages")
+```
+
+The distribution of respondents' satisfaction with democracy across urban and rural areas is graphically represented by the below mosaic bar plot. Two bars, one for urban respondents and one for rural respondents, make up the plot. The various satisfaction categories; "Not at all satisfied," "Not very satisfied," "Fairly satisfied," and "Very satisfied", are represented by the segments of each bar.The proportions of respondents in each satisfaction category are displayed in the urban bar. For instance, "Very satisfied" (18.9%) may be represented by a smaller portion, while "Not very satisfied" (30.3%) may occupy a larger segment. Although the proportions may differ, the rural bar represents the same satisfaction categories. For example, a larger proportion of respondents (21.7%) fall into the "Very satisfied" category in the rural group.
+```{r 6 mosaic-plot, fig.width=9, fig.height=5,echo=FALSE, warning=FALSE, message=FALSE }
+library(dplyr)
+library(ggplot2)
+
+AB_mosaic <- AB.Ghana.R9 %>%
+  mutate(Q31_num = as.numeric(Q31)) %>%
+  filter(Q31_num %in% 1:4, !is.na(URBRUR_label)) %>%
+  mutate(
+    Q31_label = as_factor(Q31)
+  )
+
+AB_mosaic %>%
+  count(URBRUR_label, Q31_label) %>%
+  ggplot(aes(
+    x = URBRUR_label,
+    y = n,
+    fill = Q31_label
+  )) +
+  geom_col(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    x = "Residence",
+    y = "Percent",
+    fill = "Satisfaction",
+    title = "Satisfaction with Democracy by Residence"
+  ) +
+  theme_minimal()
+
+```
+
+
+#### <u>The Rural-Urban variable and Dichotomous Satisfaction with Democracy</u>
+
+The recoded satisfaction with democracy (SWD) is shown in Table 4 (below) as a simplified contingency table with two categories; "Satisfied" and "Not Satisfied." The Urban and rural divide are used to categorize the data, and the internal percentages of each group are shown for comparison. We can observe that of the urban participants, 48.3% are satisfied and 51.7% are not. The distribution is slightly different among rural participants, with 49.0% expressing satisfaction and 51.0% expressing dissatisfaction.At a binary level, opinions on democracy are fairly similar across various types of residence, as evidenced by the small difference in satisfaction between urban and rural groups. This table provides a clear and simplified overview of public opinion, highlighting general trends without getting lost in the details of extremely specific response categories.
+
+```{r 7,echo=FALSE, warning=FALSE, message=FALSE}
+
+sw_table <- AB.Ghana.R9 %>%
+  filter(!is.na(SWD), !is.na(URBRUR_label)) %>%
+  mutate(
+    SWD_label = case_when(
+      SWD == 1 ~ "Satisfied",
+      SWD == 0 ~ "Not Satisfied"
+    )
+  ) %>%
+  count(URBRUR_label, SWD_label) %>%
+  group_by(URBRUR_label) %>%
+  mutate(Percent = n / sum(n) * 100) %>%
+  rename(Residence = URBRUR_label, SWD = SWD_label, Count = n) %>%
+  select(Residence, SWD, Count, Percent)  
+
+kable(sw_table, digits = 2, caption = "Table 4: Recoded Satisfaction with Democracy (SWD) by Residence with Column Percentages")
+```
+
+Using two streamlined categories; "Satisfied" and "Not Satisfied", the stacked bar chart below graphically represents the recoded satisfaction levels with democracy of both urban and rural participants. Each bar is divided according to the proportion of people in each category and represents a particular residential group. The graph similar to Table 4 also shows that the two groups' satisfaction distributions are fairly similar. Of the urban respondents, 48.3% are satisfied and 51.7% are dissatisfied. 49.0% of participants in rural areas express satisfaction, while 51.0% express dissatisfaction. The nearly equal split between the two groups suggests that, in this binary format, overall satisfaction with democracy is not significantly influenced by the type of residence.This simplified visual is especially useful for highlighting general patterns and for communicating findings in contexts where a detailed breakdown of satisfaction levels is not necessary or when higher levels of categories are preffered.  
+
+```{r 8,echo=FALSE, warning=FALSE, message=FALSE}
+ library(ggplot2)
+library(scales)
+
+
+plot_data <- AB.Ghana.R9 %>%
+  filter(!is.na(SWD_label) & !is.na(URBRUR_label)) %>%
+  count(URBRUR_label, SWD_label) %>%
+  group_by(URBRUR_label) %>%
+  mutate(Percent = n / sum(n) * 100) %>%
+  ungroup()
+
+# Plot
+ggplot(plot_data, aes(x = URBRUR_label, y = Percent, fill = SWD_label)) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(aes(label = paste0(round(Percent, 1), "%")), 
+            position = position_stack(vjust = 0.5), color = "white", size = 4) +
+  scale_fill_manual(values = c("Very Satisfied" = "green", 
+                               "Not Very Satisfied" = "red")) +
+  labs(
+    title = "Proportional Distribution of Satisfaction with Democracy (Recoded)",
+    x = "Residence",
+    y = "Percentage",
+    fill = "Satisfaction Level"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+#### <u>Clarified Hypotheses</u>
+
+In the prelude of the Difference of Proportions Test and Confidence interval. It is crucial to clarify the Null Hypothesis ($H_0$) and the Alternative thesis ($H_1$), to guide one in their analysis:
+
+**Null Hypothesis ($H_0$):**  
+There is no difference in the proportion of respondents who are satisfied with democracy between urban and rural residents in Ghana.
+
+$$
+H_0: p_{urban} = p_{rural}
+$$
+
+**Alternative Hypothesis ($H_1$):**  
+There is a difference in the proportion of respondents who are satisfied with democracy between urban and rural residents.
+
+$$
+H_1: p_{urban} \ne p_{rural}
+$$
+
+#### <u>Difference of Proportions Test and Confidence Interval</u>
+With using the recoded binary variable (SWD), Table 5 (below) provides an overview of satisfaction with democracy by urban and rural contexts. The numbers and percentages of participants who express satisfaction in each category are shown in this table. According to the table, we observe only minor variations in the percentages of participants who say they are satisfied with democracy between urban and rural areas. This initial descriptive result provides crucial insight into the distribution of satisfaction across different geographic locations and serves as a prelude to formal hypothesis testing.
+
+```{r 9, echo=FALSE, warning=FALSE, message=FALSE}
+
+prop_table <- AB.Ghana.R9 %>%
+  filter(!is.na(SWD), !is.na(URBRUR_label)) %>%
+  group_by(URBRUR_label) %>%
+  summarise(
+    n_total = n(),
+    n_satisfied = sum(SWD == 1),
+    prop_satisfied = n_satisfied / n_total
+  )
+
+
+library(knitr)
+library(kableExtra)
+
+
+prop_table %>%
+  mutate(
+    prop_satisfied = round(prop_satisfied * 100, 1) 
+  ) %>%
+  rename(
+    Residence = URBRUR_label,
+    `Total Respondents` = n_total,
+    `Satisfied Respondents` = n_satisfied,
+    `Proportion Satisfied (%)` = prop_satisfied
+  ) %>%
+  kable(
+    caption = "Table 5: Proportion of Respondents Satisfied with Democracy by Residence",
+    format = "html",
+    align = "lccc"
+  ) %>%
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+
+With regards to the results of the calculated difference in proportions between urban and rural participants with respect to their level of satisfaction with democracy, along with the standard error and the 90% confidence interval, they are displayed in Table 6 (below). Since the confidence interval includes zero and the variation in satisfaction seems to be minimal (-0.8%), it could be said that the difference is not statistically significant. In addition to measuring the relationship, this table provides inferential support for determining whether the observed differences could be due to chance.
+```{r 10, echo=FALSE, warning=FALSE, message=FALSE}
+# Here we Pull group sizes and successes
+urban <- prop_table %>% filter(URBRUR_label == "Urban")
+rural <- prop_table %>% filter(URBRUR_label == "Rural")
+
+# Then we extract values
+p1 <- urban$prop_satisfied
+p2 <- rural$prop_satisfied
+n1 <- urban$n_total
+n2 <- rural$n_total
+
+#The difference in proportions
+diff_prop <- p1 - p2
+
+# The SE
+se_diff <- sqrt((p1 * (1 - p1)) / n1 + (p2 * (1 - p2)) / n2)
+
+# Z-score for 90% CI (two-tailed)
+z_90 <- qnorm(0.95)
+
+# The confidence Interval
+ci_lower <- diff_prop - z_90 * se_diff
+ci_upper <- diff_prop + z_90 * se_diff
+
+# Output
+
+publish_table <- data.frame(
+  `Proportion Satisfied (Urban)` = round(p1 * 100, 1),
+  `Proportion Satisfied (Rural)` = round(p2 * 100, 1),
+  `Difference in Proportions (Urban - Rural)` = round(diff_prop * 100, 1),
+  `Standard Error` = round(se_diff, 3),
+  `90% CI Lower Bound` = round(ci_lower * 100, 1),
+  `90% CI Upper Bound` = round(ci_upper * 100, 1)
+)
+
+library(knitr)
+library(kableExtra)
+
+kable(publish_table, caption = "Table 6: Difference in Proportion Satisfied with Democracy by Residence (with 90% CI)",
+      align = "c", format = "html") %>%
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover", "condensed"))
+
+
+```
+
+Table 7 (below) presents the findings of a two-proportion z-test that was used to determine whether the observed difference in satisfaction from the survey is statistically significant. The test's estimated proportions, differences, confidence intervals, and p-value have been presented.  A p-value of 0.71 and a confidence interval that includes zero indicate that there is no statistically significant difference in satisfaction based on residence, proving that living in an urban or rural area in Ghana has no effect on the sample's overall satisfaction with democracy. The test results also show that the difference between groups is not statistically significant at the 90% confidence threshold.
+
+
+```{r 11, echo=FALSE, warning=FALSE, message=FALSE}
+
+test_result <- prop.test(
+  x = c(urban$n_satisfied, rural$n_satisfied),
+  n = c(urban$n_total, rural$n_total),
+  conf.level = 0.90,
+  correct = FALSE
+)
+
+test_summary <- data.frame(
+  `Group 1 (Urban) Proportion` = round(test_result$estimate[1] * 100, 1),
+  `Group 2 (Rural) Proportion` = round(test_result$estimate[2] * 100, 1),
+  `Difference (Urban - Rural)` = round(diff(test_result$estimate) * 100, 1),
+  `90% CI Lower Bound` = round(test_result$conf.int[1] * 100, 1),
+  `90% CI Upper Bound` = round(test_result$conf.int[2] * 100, 1),
+  `p-value` = signif(test_result$p.value, 3)
+)
+
+
+library(knitr)
+library(kableExtra)
+
+kable(test_summary, caption = "Table 7: Two-Proportion Z-Test Comparing Satisfaction with Democracy by Residence",
+      format = "html", align = "c") %>%
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+#### <u>Interpretation of bivariate association in relation to the Theory</u>
+
+This report aimed to explore Afrobarometer Round 9 survey data to provide an analysis of whether being an urban or rural resident in Ghana is associated with citizens’ satisfaction with democracy, guided by theoretical insights into political geography and related democratic engagement. Although it was hypothesized that urban residents might report greater SWD due to increased access to services, civic resources, and institutional responsiveness (Harding, 2020; Vigna, 2024), the bivariate test results did not support a significant difference.This is in consideration that according to the two-proportion z-test, 49.0% of participants in rural areas and 48.3% of participants in urban areas expressed satisfaction with democracy. So this essentially means that we cannot rule out the null hypothesis at the 90% confidence level because the proportionak difference was only -0.8% and the 90% confidence interval [-4.2%, 2.7%] contained zero. 
+
+The earlier ideas of geography of discontent and modernisation theory provide a particularly insightful perspective on this statistical finding. As Vigna (2024) argues that because urban settings provide more exposure to political discourse, civic institutions, and accountability mechanisms, they tend to foster more liberal and participatory democratic attitudes. On the other hand, rural communities—which are frequently characterised by structural neglect and underinvestment—may be more vulnerable to political alienation. The alternative hypothesis ($H_1$), which was based on these theoretical expectations, suggested that there would be a discernible difference between urban and rural residents' levels of satisfaction with democracy. 
+
+Even so, this hypothesis was not supported by the two-proportion z-test results. We were unable to reject the null hypothesis ($H_0$), which holds that there is no difference between the two groups, because the observed difference in satisfaction was insignificant and the 90% confidence interval included zero. This finding from the bivariate analysis of the Afrobarometer survey data suggests that, despite structural differences, urban and rural residents in Ghana express similar levels of satisfaction with democracy, indicating that geographic disparities may not currently shape democratic attitudes in a divergent way. It is rather consistent with the perspective of Armah-Attoh and Robertson (2014), who emphasise democracy as a common practice based on citizens' interactions with governmental entities. Meaning that if government responsiveness—or lack thereof—is similar for both urban and rural populations, this could explain the statistical similarity in satisfaction. This can be taken as a true demonstration that although structural inequalities continue to be prominent, their impact on satisfaction with democracy seems to be more intricate than simply distinguishing between urban and rural areas, therefore highlighting the necessity for more detailed, multidimensional research in future studies. 
+
+# Comparitive Analysis 
+
+With regards to the comparative Analysis, the country of Nigeria will be chosen from the Round 9 Afrobarometer survey. The Table 1 (below) this section presents the dichotomous variable against a multiple category variable 
+```{r 12, message=FALSE, warning=FALSE, echo=FALSE}
+library(haven)
+
+AfroB_NG <- read_spss("afrobarometer_release-dataset_nig_r9_en_2023-04-01.sav")
+
+
+AB.Nigeria.R9 <- AfroB_NG %>%
+  select(RESPNO, URBRUR, Q31)
+
+
+AB.Nigeria.R9 <- AB.Nigeria.R9 %>%
+  mutate(
+    SWD = case_when(
+      Q31 %in% c(3, 4) ~ 0,
+      Q31 %in% c(1, 2) ~ 1,
+      Q31 %in% c(8, 9, 0) ~ NA_real_
+    ),
+    URBRUR_label = as_factor(URBRUR),
+    Q31_label = as_factor(Q31),
+    SWD_label = case_when(
+      SWD == 1 ~ "Satisfied",
+      SWD == 0 ~ "Not Satisfied"
+    )
+  )
+
+
+
+library(knitr)
+
+table1_ng <- AB.Nigeria.R9 %>%
+  count(URBRUR_label, Q31_label) %>%
+  rename(Residence = URBRUR_label, Response = Q31_label, Count = n)
+
+kable(table1_ng, caption = "Table 1: Sample Distribution of Satisfaction with Democracy (Q31) by Urban/Rural Residence — Nigeria")
+
+
+```
+
+#### <u>The Rural-Urban variable and Dichotomous Satisfaction with Democracy in Nigeria</u>
+
+A thorough classification of democratic satisfaction (SWD) between urban and rural participants in Nigeria is provided in Table 2 (below) and its accompanyig proportional distribution graph. The perceived effectiveness of democracy is significantly higher in cities, as evidenced by the 81.36% satisfaction rate among city dwellers compared to 75.62% in rural areas.
+
+```{r 13, message=FALSE, warning=FALSE, echo=FALSE}
+
+table4_ng <- AB.Nigeria.R9 %>%
+  filter(!is.na(SWD), !is.na(URBRUR_label)) %>%
+  mutate(
+    SWD_label = case_when(
+      SWD == 1 ~ "Satisfied",
+      SWD == 0 ~ "Not Satisfied"
+    )
+  ) %>%
+  count(URBRUR_label, SWD_label) %>%
+  group_by(URBRUR_label) %>%
+  mutate(Percent = n / sum(n) * 100) %>%
+  rename(Residence = URBRUR_label, SWD = SWD_label, Count = n) %>%
+  select(Residence, SWD, Count, Percent)
+
+
+library(knitr)
+kable(table4_ng, digits = 2, caption = "Table 2: Recoded Satisfaction with Democracy (SWD) by Residence with Column Percentages — Nigeria")
+
+
+
+
+library(ggplot2)
+library(scales)
+
+
+plot_data_ng <- AB.Nigeria.R9 %>%
+  filter(!is.na(SWD), !is.na(URBRUR_label)) %>%
+  mutate(
+    SWD_label = case_when(
+      SWD == 1 ~ "Satisfied",
+      SWD == 0 ~ "Not Satisfied"
+    )
+  ) %>%
+  count(URBRUR_label, SWD_label) %>%
+  group_by(URBRUR_label) %>%
+  mutate(Percent = n / sum(n) * 100) %>%
+  ungroup()
+
+
+ggplot(plot_data_ng, aes(x = URBRUR_label, y = Percent, fill = SWD_label)) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(aes(label = paste0(round(Percent, 1), "%")),
+            position = position_stack(vjust = 0.5), color = "white", size = 4) +
+  scale_fill_manual(values = c("Satisfied" = "green", "Not Satisfied" = "red")) +
+  labs(
+    title = "Proportional Distribution of Satisfaction with Democracy by Residence — Nigeria",
+    x = "Residence",
+    y = "Percentage",
+    fill = "Satisfaction Level"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+```
+
+
+
+
+#### <u>The Difference of Proportions and Confidence Intervals on Nigeria</u>
+The percentage of satisfied respondents for each residential group is shown in Table 3 (below). The urban and rural gap seen in the recoded counts is confirmed by the urban satisfaction rate of 81.4% and the rural satisfaction rate of 75.6%.
+
+```{r 14, warning=FALSE, message=FALSE, echo=FALSE}
+
+prop_table_ng <- AB.Nigeria.R9 %>%
+  filter(!is.na(SWD), !is.na(URBRUR_label)) %>%
+  group_by(URBRUR_label) %>%
+  summarise(
+    n_total = n(),
+    n_satisfied = sum(SWD == 1),
+    prop_satisfied = round(n_satisfied / n_total * 100, 1)
+  ) %>%
+  rename(
+    Residence = URBRUR_label,
+    `Total Respondents` = n_total,
+    `Satisfied Respondents` = n_satisfied,
+    `Proportion Satisfied (%)` = prop_satisfied
+  )
+
+kable(prop_table_ng, caption = "Table 3: Proportion of Respondents Satisfied with Democracy by Residence — Nigeria")
+```
+
+With an observed 90% confidence interval spanning from 2.4% to 9.2%, Table 4 (below) estimates a 5.8 percentage point difference in satisfaction between urban and rural areas. The result is statistically significant and points to a consistent urban and rural divide in Nigeria.
+
+```{r 15, echo=FALSE, warning=FALSE, message=FALSE}
+
+urban_ng <- prop_table_ng %>% filter(Residence == "Urban")
+rural_ng <- prop_table_ng %>% filter(Residence == "Rural")
+
+p1_ng <- urban_ng$`Proportion Satisfied (%)` / 100
+p2_ng <- rural_ng$`Proportion Satisfied (%)` / 100
+n1_ng <- urban_ng$`Total Respondents`
+n2_ng <- rural_ng$`Total Respondents`
+
+
+diff_prop_ng <- p1_ng - p2_ng
+se_diff_ng <- sqrt((p1_ng * (1 - p1_ng)) / n1_ng + (p2_ng * (1 - p2_ng)) / n2_ng)
+z_90 <- qnorm(0.95)
+ci_lower_ng <- diff_prop_ng - z_90 * se_diff_ng
+ci_upper_ng <- diff_prop_ng + z_90 * se_diff_ng
+
+
+table6_ng <- data.frame(
+  `Proportion Satisfied (Urban)` = round(p1_ng * 100, 1),
+  `Proportion Satisfied (Rural)` = round(p2_ng * 100, 1),
+  `Difference (Urban - Rural)` = round(diff_prop_ng * 100, 1),
+  `Standard Error` = round(se_diff_ng, 3),
+  `90% CI Lower Bound` = round(ci_lower_ng * 100, 1),
+  `90% CI Upper Bound` = round(ci_upper_ng * 100, 1)
+)
+
+kable(table6_ng, caption = "Table 4: Difference in Proportion Satisfied with Democracy by Residence (with 90% CI) — Nigeria")
+```
+
+More importantly the inferential analysis confirming the significance of the urban and rural disparity is shown in Table 5 (below). The p-value (0.00649) supports the earlier descriptive findings by showing strong evidence against the null hypothesis. 
+```{r 16, echo=FALSE, warning=FALSE, message=FALSE}
+
+test_result_ng <- prop.test(
+  x = c(urban_ng$`Satisfied Respondents`, rural_ng$`Satisfied Respondents`),
+  n = c(urban_ng$`Total Respondents`, rural_ng$`Total Respondents`),
+  conf.level = 0.90,
+  correct = FALSE
+)
+
+
+table7_ng <- data.frame(
+  `Urban Proportion (%)` = round(test_result_ng$estimate[1] * 100, 1),
+  `Rural Proportion (%)` = round(test_result_ng$estimate[2] * 100, 1),
+  `Difference (Urban - Rural)` = round(diff(test_result_ng$estimate) * 100, 1),
+  `90% CI Lower` = round(test_result_ng$conf.int[1] * 100, 1),
+  `90% CI Upper` = round(test_result_ng$conf.int[2] * 100, 1),
+  `p-value` = signif(test_result_ng$p.value, 3)
+)
+
+kable(table7_ng, caption = "Table 5: Two-Proportion Z-Test Comparing Satisfaction with Democracy by Residence — Nigeria")
+```
+
+#### <u>Interpretation of Comparison Findings: Nigeria vs Ghana</u> 
+
+Regarding the relationship between place of residence and satisfaction with democracy, the findings for Ghana and Nigeria are distinctly different. The results in Nigeria refute the null hypothesis, which states that there is no difference in the satisfaction levels of urban and rural residents. According to the survey data satisfaction rate is 5.8 percentage points higher in urban areas (81.4%) than in rural areas (75.6%). With a p-value of 0.00649 and a 90% confidence interval of [2.4%, 9.2%], this variation can be said to be statistically significant and shows that urban Nigerians are more satisfied with democracy than their rural counterparts.
+
+However, in Ghana, the analysis does not rule out the null hypothesis. The disparity between urban and rural satisfaction is -0.8 percentage points, with urban satisfaction standing at 48.3% and rural at 49.0%. The observed difference is not statistically significant, as indicated by the p-value of 0.71 and the 90% confidence interval of [−4.2%, 2.7%] containing zero. As a result, Ghana's urban-rural divide in terms of satisfaction with democracy is insignificant.This distinction between the two countries is very significant. Ghana shows a more equitable distribution of democratic legitimacy, despite Nigeria's geographically unequal pattern. The comparison highlights the ways in which geographic location can affect political opinions in some contexts but not in others, most likely due to differences in levels of political participation, governance, or development.
+
+The theoretical framework presented in the report is directly impacted by the comparative analysis of Ghana and Nigeria, particularly the notion that political beliefs are influenced by spatial context. Based on the conceptual framework from literature on the relationship between democratic legitimacy and spatial inequality, the report suggests that disparities in access to political resources and services, such as representation, infrastructure, and security, may cause different geographic groups to have different opinions about democracy (Vigna, 2024). The results from Nigeria support this theory: people who live in cities, which often have better services and closer access to political power, are far happier with democracy. This is consistent with the idea that urban areas may promote increased perceived accountability and trust from government organisations. The results from Ghana, on the other hand, do not refute the null hypothesis because the confidence interval includes zero and the urban–rural difference is statistically insignificant (p = 0.71). This lack of spatial disparity suggests that Ghana may be more adept at allocating democratic resources equitably, lessening the influence of location-based inequality on political opinions. As a result, the comparative element strengthens the theoretical case by showing that regional differences in citizen's democratic satisfaction are dependent rather than universal. It demonstrates that while location matters, the degree of that significanc varies according to each nation's distinct institutional and political framework. By identifying situations where spatial divisions in democratic legitimacy occur or are lessened, this helps to refine the theoretical claim.
+
+# Reference List 
+1. Armah-Attoh, D., & Robertson, A. (2014). The practice of democracy in Ghana: Beyond the formal framework. Afrobarometer.
+ 
+2. Crawford, Gordon. "‘Making democracy a reality’? The politics of decentralisation and the limits to local democracy in Ghana." Journal of contemporary African studies 27, no. 1 (2009): 57-83.
+ 
+ 3. Harding, R. (2020). Who is democracy good for? Elections, rural bias, and health and education outcomes in sub-Saharan Africa. The Journal of Politics, 82(1), 241-254.
+ 
+ 4. Lago, I. (2022). Rural decline and satisfaction with democracy. Acta Politica, 57(4), 753-771.
+
+5. Oppong, F. K., Oduro, F., Awal, M., & Debrah, E. (2013). Civil society engagement with political parties during elections: lessons from Ghana and Sierra Leone. Oxfam International.
+
+6. Vigna, N. (2024). An urban–rural divide of political discontent in Europe? Conflicting results on satisfaction with democracy. European Political Science Review, 16(4), 596-611.
+
+
+
+
+
