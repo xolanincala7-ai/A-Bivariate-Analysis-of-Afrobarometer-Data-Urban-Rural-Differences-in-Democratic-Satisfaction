@@ -1,8 +1,6 @@
 # A-Bivariate-Analysis-of-Afrobarometer-Data-Urban-Rural-Differences-in-Democratic-Satisfaction
 This is an Analysis of Afrobarometer Round 9 data using R to test whether urban–rural residency. influences respondent satisfaction with democracy in Ghana, as part of my MA‑E‑Science work.
 
-Here’s the Ghana README rewritten in the same **abstract-style format** with the academic tagline at the top:
-
 # Urban–Rural Differences in Democratic Satisfaction (Ghana)  
 *Part of my MA‑E‑Science portfolio — please read this project*
 
@@ -24,8 +22,4 @@ The findings show **no statistically significant difference** in satisfaction wi
 
 This suggests that, despite structural inequalities, **citizens across geographic divides share similar democratic attitudes** in Ghana.  
 
-
 **Please read this project** — it is part of my **Master of Arts in E‑Science** work, applying data science methods to political and development studies.  
-
-
-Would you like me to now create a **uniform header style** for both repos (same emoji, same tagline placement, same section order) so they look perfectly aligned when someone browses your GitHub portfolio?
