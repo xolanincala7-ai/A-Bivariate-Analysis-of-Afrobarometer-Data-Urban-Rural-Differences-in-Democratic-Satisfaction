@@ -6,7 +6,7 @@ This is an Analysis of Afrobarometer Round 9 data using R to test whether urbanâ
 
 # Project Preview
 
-Screenshot: 
+Screenshot: https://github.com/xolanincala7-ai/A-Bivariate-Analysis-of-Afrobarometer-Data-Urban-Rural-Differences-in-Democratic-Satisfaction/blob/main/report2.bivariate.screenshot.png
 
 ## Project Purpose  
 This project analyses **Afrobarometer Round 9 survey data (2021â€“2023)** to test whether urban and rural residence influences satisfaction with democracy in Ghana. The study recodes survey responses into a binary variable (Satisfied vs Not Satisfied) and applies statistical tests to compare proportions across residence types.
